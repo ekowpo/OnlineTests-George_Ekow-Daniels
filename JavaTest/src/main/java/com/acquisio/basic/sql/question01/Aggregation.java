@@ -39,6 +39,10 @@ public class Aggregation {
         }
     }
 
+    /**
+     * This method prints the number of employees per project
+     * @throws SQLException must implement an sql exception handler for this method
+     */
     private void printNumberOfEmployeesPerProject() throws SQLException {
         try (Connection conn = H2DBUtil.getConnection()) {
             // Start : For consultation only, can be removed
@@ -50,7 +54,7 @@ public class Aggregation {
 
             // TODO: Insert query here
             // See requirement in this class javadoc
-            String query = "select 1 as dummyValue from dual";
+            String query = "select projects.title as ProjectTitle, COALESCE(Count(employees_projects.employee_id),0) as NumberOfEmployees from employees_projects left join projects on  employees_projects.project_id=projects.id group by projects.title";
 
             ResultSet resultSet = conn.createStatement().executeQuery(query);
             H2DBUtil.displayResultSet(resultSet);
