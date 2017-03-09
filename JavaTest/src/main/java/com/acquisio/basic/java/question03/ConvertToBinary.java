@@ -10,14 +10,31 @@ package com.acquisio.basic.java.question03;
  *
  * IMPORTANT: Add all missing javadoc that you think is necessary.
  */
+
 public class ConvertToBinary {
 
     public static void main(String[] args) {
         ConvertToBinary instance = new ConvertToBinary();
-        System.out.println(instance.convertToBinary(17));
+        System.out.println(instance.convertToBinary(22));
     }
 
+    StringBuilder binary = new StringBuilder();
+    
+    /**
+     * This method converts decimal to binary
+     * @param val decimal
+     * @return the binary number 
+     */
     private String convertToBinary(int val) {
-        return null; // TODO: Insert your code here.
+        
+    	
+        if((val/2)>0)
+         convertToBinary(val/2);
+        
+        binary.append(Integer.toString(val%2));
+        return binary.toString();
+        
     }
+    
+    
 }
