@@ -20,7 +20,37 @@ public class FizzBuzz {
         main.fizzBuzz(50);
     }
 
+    /**
+     * fizzbuzz method
+     * @param maxValue Max value
+     */
     private void fizzBuzz(int maxValue) {
-        // TODO: Insert your code here
+       
+    	for(int i= 0; i<=maxValue; i++)
+    	{
+    		try
+    		{
+    	
+    		if((i%3)==0)
+    		{
+    			
+    			System.out.print("‘Fizz’");
+    		}
+    		if((i%5)==0)
+    		{
+    			System.out.print("‘Buzz’");
+    		}
+    		if((i%i)==0)
+    		{
+    			System.out.print(i);
+    		}
+    		System.out.println("");
+    		}
+    		catch(ArithmeticException ex)
+    		{
+    			
+    		}
+    		
+    	}	
     }
 }
