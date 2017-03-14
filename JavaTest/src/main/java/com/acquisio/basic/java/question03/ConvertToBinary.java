@@ -17,7 +17,22 @@ public class ConvertToBinary {
         System.out.println(instance.convertToBinary(17));
     }
 
+   StringBuilder binary = new StringBuilder();
+    
+    /**
+     * This method converts decimal to binary
+     * @param val decimal
+     * @return the binary number 
+     */
     private String convertToBinary(int val) {
-        return null; // TODO: Insert your code here.
+        
+    	// TODO: Insert your code here.
+        if((val/2)>0)
+         convertToBinary(val/2);
+        
+        binary.append(Integer.toString(val%2));
+        return binary.toString();
+        
     }
+   
 }
