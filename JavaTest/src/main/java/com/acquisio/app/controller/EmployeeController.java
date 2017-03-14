@@ -22,4 +22,24 @@ public class EmployeeController {
         return employeeRepository.findAll().stream()
                 .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
+    
+       @RequestMapping(method=RequestMethod.PUT, value="/employees/{id}/{salary}/{department}")
+    public ResponseEntity<String> update(@PathVariable("id") String id,@PathVariable("salary") String salary, @PathVariable("department") String deptid) {
+      if(Integer.parseInt(salary)>10000&& Integer.parseInt(salary)<500000){
+    	
+    	  Employee update = employeeRepository.findOne(Long.parseLong(id));
+    	  Department dept = departmentRepository.findOne(Long.parseLong(deptid));
+    	  
+      update.setSalary(Integer.parseInt(salary));
+      update.setDepartment(dept);
+     
+       employeeRepository.save(update);
+
+       return new ResponseEntity("Update successfull",HttpStatus.OK);
+       
+      
+      }
+
+      return new ResponseEntity("Did not update",HttpStatus.NOT_MODIFIED);
+    }
 }
