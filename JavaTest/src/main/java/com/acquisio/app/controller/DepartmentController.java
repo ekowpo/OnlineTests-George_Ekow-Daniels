@@ -22,4 +22,11 @@ public class DepartmentController {
         return departmentRepository.findAll().stream()
                 .collect(Collectors.toMap(Department::getId, Function.identity()));
     }
+        @RequestMapping(value = "/departments", method = RequestMethod.POST)
+    public ResponseEntity<String> createEmployee(@RequestBody Department department) 
+    {
+    	departmentRepository.save(department);
+        System.out.println(department);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
 }
